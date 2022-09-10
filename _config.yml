@@ -1,0 +1,17 @@
+title: André Rösti
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+collections_dir: content
+collections:
+  projects:
+    directory: projects/
+    output: true
+    sort_by: date
+  notes:
+    directory: /notes
+    relative_directory: notes
+    output: true
+    sort_by: date

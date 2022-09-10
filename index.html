@@ -1,0 +1,22 @@
+---
+---
+
+<section class="row">
+<h2 class="section-title">About Me</h2>
+<p>Hi! I'm André, a Ph.D. student in the <a href="https://ssllab.org">Secure Systems and Software Lab</a> at the University of California, Irvine. My research interests lie broadly in operating systems and systems security. I am currently working on a novel multi-variant execution environment that incorporates attacker deception techniques.</p>
+<p>On this website, you can find a selection of projects I have worked on, as well as some technical notes that might be useful to others.</p>
+</section>
+
+<div class="row">
+
+<section class="column">
+<h2 class="section-title">Research &amp; Projects</h2>
+{% include articles.html collection=site.projects link_all=false %}
+</section>
+
+<section class="column">
+<h2 class="section-title">Notes &amp; Personal</h2>
+{% include articles.html collection=site.notes link_all=true %}
+</section>
+
+</div>

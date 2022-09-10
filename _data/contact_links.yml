@@ -1,0 +1,13 @@
+- is_email: true
+  label: E-Mail
+  link: an {dot} roesti {at} gmail {dot} com
+  icon: email.svg
+- label: GitHub
+  link: https://github.com/andrej
+  icon: github.svg
+- label: LinkedIn
+  link: https://www.linkedin.com/in/roesti/
+  icon: linkedin.svg
+- label: StackOverflow
+  link: http://stackoverflow.com/users/602216/anroesti?tab=profile
+  icon: stackoverflow.svg

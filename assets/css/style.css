@@ -1,0 +1,371 @@
+/* Colors */ 
+
+body {
+	background: #f3ede2;
+	color: #000;
+}
+
+#logo a svg {
+	stroke: #f3ede2;
+}
+
+#logo a:hover svg {
+	stroke: #e1d2b7;
+}
+
+#upper address ul li a .icon svg {
+	border-radius: 4px;
+	fill: #000;
+	stroke: #000;
+	fill: #f3ede2;
+	stroke: #f3ede2;
+}
+
+#upper address ul li a:hover .icon svg {
+	background: #e1d2b7;
+	fill: #000;
+	stroke: #000;
+}
+
+main a, main a:visited {
+	color: #05c;
+}
+
+main a:hover {
+	color: #003b8f;
+}
+
+#upper {
+	background: #000;
+	color: #fff;
+}
+
+#upper a, #upper a:visited {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+header nav ul li a, header nav ul li a:visited {
+	/*background: rgba(0, 0, 0, 0.1);*/
+	background: #ede4d4;
+	color: #000;
+}
+
+header nav ul li a:hover {
+	background: #e1d2b7;
+	text-decoration: none;
+}
+
+/* Font and text layout properties */
+body {
+	font-family: 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, sans-serif;
+	line-height: 1.5;
+	color: #000;
+}
+
+a, a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+	margin: 12px 0;
+}
+
+/* Overall Layout */
+body {
+	width: 100%;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+
+header, main {
+	box-sizing: border-box;
+}
+
+header #upper {
+	padding: 30px 20px;  /* default value for small screens */
+}
+
+#logo {
+    margin: 0 0 20px 0;
+}
+
+header nav ul {
+	margin: 7px 0 0 0;
+}
+
+header nav ul li a {
+	padding: 7px 15px;
+	margin: 7px 0;
+}
+
+main, footer {
+	padding: 10px 20px;  /* default value for small screens */
+}
+
+main>*:first-child {
+	margin-top: 0;
+}
+
+@media screen and (min-width: 700px) {
+	header #upper {
+		padding: 40px 20px;
+	}
+
+	#logo {
+		margin: 0 0 40px 0;
+	}
+
+	header nav ul {
+		margin: 20px 0 0 0;
+	}
+
+	header nav ul li a {
+		padding: 10px 25px;
+		margin: 10px 0;
+	}
+
+	main, footer {
+		padding: 30px 60px;  /* more padding for larger screens */
+	}
+}
+
+/* Desktop style */
+@media screen and (min-width: 1000px) {
+	html {
+		/* vertically center if we cannot fill the entire screen */
+		display: flex;
+		align-items: center;
+		min-height: 100%;
+	}
+
+	body {
+		margin: 50px auto;
+	}
+
+	header, main {
+		float: left;
+	}
+
+	header {
+		width: 25%;
+	}
+
+	main {
+		width: 75%;
+	}
+
+	footer {
+		clear: left;
+	}
+}
+
+/* Header */
+#logo a {
+	display: block;
+	width: 220px;
+	height: 105px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+#logo a span {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+	display: block;
+}
+
+#logo a svg {
+	width: 100%;
+	height: 100%;
+}
+
+#upper {
+	text-align: center;
+}
+
+#upper address {
+	font-style: normal;
+	font-size: 0.875em;
+}
+
+#upper address ul {
+	text-align: center !important;
+}
+
+#upper address ul li a.has-icon span {
+	display: none;
+}
+
+header nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+header nav ul li a {
+	display: block;
+	font-size: 0.875em;
+}
+
+/* Main content */
+ul.articles {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.articles li {
+	margin: 20px 0;
+}
+
+ul.articles li p, ul.articles li .article-heading {
+	margin: 6px 0;
+}
+
+ul.articles li .article-heading {
+	font-size: 1em;
+	font-weight: 500;
+}
+
+ul.articles li p {
+	font-size: .875em;
+}
+
+ul.horizontal-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+ul.horizontal-nav li {
+	display: inline;
+}
+
+ul.horizontal-nav li+li {
+    margin-left: 20px;
+}
+
+/* Section titles */
+.section-title {
+	font-size: 1em;
+	font-size: 0.875em;
+	text-transform: uppercase;
+	font-weight: 500;
+	color: rgba(0, 0, 0, 0.6)
+}
+
+/* Grid layout */
+.row, .column {
+	box-sizing: border-box;
+}
+
+.row, .column {
+	padding: 15px 0;
+}
+
+.row:first-child {
+	padding-top: 0;
+}
+
+.row:last-child {
+	padding-bottom: 0;
+}
+
+.row:after {
+	display: table;
+	content: "";
+	clear: both;
+}
+
+@media (min-width: 700px) {
+	.column {
+		padding: 0 15px;
+		float: left;
+		width: 50%;
+	}
+
+	.column:first-child {
+		padding-left: 0;
+	}
+
+	.column:last-child {
+		padding-right: 0;
+	}
+}
+
+/* Footer */
+footer {
+	text-align: right;
+	font-size: 0.875em;
+	color: #aaa;
+}
+
+/* Miscellaneous */
+.skip-link, .hidden {
+	/* Only for screen readers */
+	display: none;
+}
+
+.icon {
+	box-sizing: border-box;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+}
+
+.icon svg {
+	width: 100%;
+	height: 100%;
+	fill: #000;
+	stroke: #000;
+}
+
+.email {
+	display: inline;
+}
+
+
+/* Print style */
+@media print {
+	body {
+		padding: 0;
+		width: 100%;
+	}
+	main a::after {
+		content: ' (' attr(href) ')';
+	}
+	#logo a svg {
+		stroke: #000;
+	}
+	#logo a span {
+		display: none;
+	}
+	header p, header address a {
+		color: #000 !important;
+	}
+	header address a {
+		white-space: nowrap;
+	}
+	header address a svg {
+		stroke: #000 !important;
+		fill: #000 !important;
+	}
+	header address a {
+		font-size: 1px;
+		letter-spacing: -1px;
+		color: transparent;
+	}
+	header address a::after {
+		font-size: 1rem;
+		letter-spacing: normal;
+		content: attr(href);
+	}
+	header nav {
+		display: none;
+	}
+}
