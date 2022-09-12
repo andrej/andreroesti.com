@@ -1,1 +1,2 @@
-<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><use href="{{ site.url }}/assets/icons/{{ include.icon }}#icon" xlink:href="{{ site.url }}/assets/icons/{{ include.icon }}#icon"></use></svg></div>
+{%- capture icon_url -%}/assets/icons/{{ include.icon }}#icon{%- endcapture -%}
+<div class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><use href="{{ icon_url | relative_url }}" xlink:href="{{ icon_url | relative_url }}"></use></svg></div>

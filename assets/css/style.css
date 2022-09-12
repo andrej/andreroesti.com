@@ -15,8 +15,6 @@ body {
 
 #upper address ul li a .icon svg {
 	border-radius: 4px;
-	fill: #000;
-	stroke: #000;
 	fill: #f3ede2;
 	stroke: #f3ede2;
 }
@@ -33,6 +31,14 @@ main a, main a:visited {
 
 main a:hover {
 	color: #003b8f;
+}
+
+main a .icon svg {
+	background: #05c;
+}
+
+main a:hover .icon svg {
+	background: #003b8f;
 }
 
 #upper {
@@ -55,6 +61,13 @@ header nav ul li a:hover {
 	text-decoration: none;
 }
 
+main .icon svg {
+	border-radius: 3px;
+	background: #000;
+	stroke: #f3ede2;
+	fill: #f3ede2;
+}
+
 /* Font and text layout properties */
 body {
 	font-family: 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, sans-serif;
@@ -70,8 +83,34 @@ a:hover {
 	text-decoration: underline;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, ol {
-	margin: 12px 0;
+h1, h2, h3, h4, h5, h6 {
+	margin: 48px 0 24px 0;
+}
+
+h1+.row, h2+.row, h3+.row, h4+.row, h5+.row, h6+.row {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.row>figure {
+	margin-top: 0;
+}
+
+p, ul, ol, figure, pre {
+	margin: 24px 0;
+}
+
+figure pre, figure ul, figure ol  {
+	margin-top: 0;
+}
+
+figure img {
+	max-width: 100%;
+}
+
+figure p {
+	margin: 6px 0;
+	font-size: .875em;
 }
 
 /* Overall Layout */
@@ -246,8 +285,12 @@ ul.horizontal-nav li {
 	display: inline;
 }
 
-ul.horizontal-nav li+li {
-    margin-left: 20px;
+ul.horizontal-nav li {
+	margin-right: 20px;
+}
+
+ul.horizontal-nav li:last-child {
+	margin-right: 0;
 }
 
 /* Section titles */
@@ -256,7 +299,12 @@ ul.horizontal-nav li+li {
 	font-size: 0.875em;
 	text-transform: uppercase;
 	font-weight: 500;
+	margin: 12px 0;
 	color: rgba(0, 0, 0, 0.6)
+}
+
+.section-title+h1, .section-title+h2, .section-title+h3, .section-title+h4, .section-title+h5, .section-title+h6 {
+	margin: 12px 0;
 }
 
 /* Grid layout */
@@ -266,6 +314,10 @@ ul.horizontal-nav li+li {
 
 .row, .column {
 	padding: 15px 0;
+}
+
+.nospace {
+	padding: 0 !important;
 }
 
 .row:first-child {
@@ -283,10 +335,20 @@ ul.horizontal-nav li+li {
 }
 
 @media (min-width: 700px) {
-	.column {
+	.two-columns .column {
 		padding: 0 15px;
 		float: left;
 		width: 50%;
+	}
+
+	.three-columns .column {
+		padding: 0 15px;
+		float: left;
+		width: 33.33%;
+	}
+
+	.three-columns .column:last-child {
+		width: 33.34%;
 	}
 
 	.column:first-child {
@@ -321,8 +383,12 @@ footer {
 .icon svg {
 	width: 100%;
 	height: 100%;
-	fill: #000;
-	stroke: #000;
+}
+
+main .icon svg {
+	position: relative;
+	bottom: -5px;
+	border-radius: 3px;
 }
 
 .email {
@@ -332,12 +398,47 @@ footer {
 
 /* Print style */
 @media print {
+	* {
+		overflow-wrap: break-word;
+	}
 	body {
-		padding: 0;
+		padding: .75in;
+		box-sizing: border-box;
 		width: 100%;
+		max-width: none;
+		background: transparent;
+		line-height: 1.3;
+		font-size: 11pt;
+	}
+	main, header #upper {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	header #upper {
+		padding-top: 0;
+		padding-bottom: 20px;
 	}
 	main a::after {
 		content: ' (' attr(href) ')';
+	}
+	#upper {
+		background: transparent;
+		color: #000;
+	}
+	#upper:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	#logo, #upper address {
+		float: left;
+	}
+	#logo {
+		margin-bottom: 20px;
+		margin-right: 40px;
+	}
+	#logo a {
+		margin: 0;
 	}
 	#logo a svg {
 		stroke: #000;
@@ -348,12 +449,33 @@ footer {
 	header p, header address a {
 		color: #000 !important;
 	}
+	#upper address ul {
+		text-align: left !important;
+	}
 	header address a {
 		white-space: nowrap;
 	}
-	header address a svg {
-		stroke: #000 !important;
-		fill: #000 !important;
+	header address a .icon {
+		width: 16px;
+		height: 16px;
+		margin: 0 5px;
+	}
+	header address a .icon svg {
+		position: relative;
+		bottom: -3px;
+		background: #000;
+		border-radius: 3px;
+		stroke: #fff !important;
+		fill: #fff !important;
+	}
+	.icon svg {
+		/* see https://stackoverflow.com/questions/6670151/how-can-i-force-browsers-to-print-background-images-in-css */
+		-webkit-print-color-adjust: exact !important;   /* Chrome, Safari 6 – 15.3, Edge */
+		color-adjust: exact !important;                 /* Firefox 48 – 96 */
+		print-color-adjust: exact !important;           /* Firefox 97+, Safari 15.4+ */
+	}
+	header address ul.horizontal-nav li {
+		display: block;
 	}
 	header address a {
 		font-size: 1px;
@@ -361,9 +483,9 @@ footer {
 		color: transparent;
 	}
 	header address a::after {
-		font-size: 1rem;
+		font-size: .875rem;
 		letter-spacing: normal;
-		content: attr(href);
+		content: attr(data-link);
 	}
 	header nav {
 		display: none;

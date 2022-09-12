@@ -1,0 +1,95 @@
+---
+title: Seat León CAN Bus Sniffing
+tagline: How to intercept messages on a modern car's CAN bus using an Arduino and a handcrafted T-splice connector
+date: 2020-01-01
+---
+
+<p class="section-title">Automotive Reverse Engineering</p>
+<h2>Seat León 5F CAN Sniffing</h2>
+<p>The 2019 Seat León 5F has six different CAN buses for comfort, engine, infotainment, etc. Intrigued by the wealth of data that could be extracted from these buses (and unwilling to spend thousands of dollars on proper CAN software), I decided to try to reverse-engineer this data stream with an Arduino and open-source software (much to the amusement of some of my friends who considered this a futile project).</p>
+<p>So far, I have built an adapter that plugs into to the passanger-side door connector and splits off the comfort CAN bus into an Arduino MKR with a CAN shield. I have not yet gotten any further than identifying which bytes are responsible for the window lifter, but if I get around to it I will continue this project. The next goal is to figure out the ambient lighting codes and possibly get a little disco going in the car. I am sure to an electrical engineering student all of this is beginner's stuff, but it definitely was a learning experience to me!</p>
+<p>To anyone seeking to do the same thing for the same make and model, I will list the parts that took me forever to find on this page. Everything on this page is provided as-is with absolutely no warranty! I'm not responsible if you try this yourself and brick your car. If you do try it though, I'd be very interested in hearing your experiences.</p>
+<h3>Passenger-side door connector</h3>
+<p>The door connector is relatively easily accessible without having to remove any other stuff. Just open the door, and it's there. As far as I could tell, nothing bad happens if the wires to the passenger-side door are disconnected when the ignition is turned on (except that the keyless lock/unlock, window lifters, speakers and ambient light on that side will stop working, of course). Therefore it seems to me like it is relatively harmless to experiment at this connecting point.</p>
+<p>I inquired at the official VW dealership and was told the VW OEM parts numbers for the connector and crimped wires are as follows:</p>
+<pre><strong>Connector housing</strong>
+8K0972701	(Flachkontaktgehäuse mit Kontaktverriegelung)
+8K0972702 	(Flachkontaktgehäuse mit Kontaktverriegelung)
+
+<strong>Crimped cables</strong>
+000979035E 	(Satz Einzelleitungen 0,5QMM mit je 2 Kontakten, im Beutel zu 5 Stück)
+000979034E 	(Satz Einzelleitungen 0,5QMM mit je 2 Kontakten, im Beutel zu 5 Stück)
+000979226E 	(Satz Einzelleitungen 2,5QMM mit je 2 Kontakten, im Beutel zu 5 Stück)
+000979242E 	(Satz Einzelleitungen 2,5QMM mit je 2 Kontakten, im Beutel zu 5 Stück)</pre>
+<p>Some information about this can also be found <a href="https://www.a4-freunde.com/showwiki.php?title=Pins%20und%20alles%20was%20dazu%20gehoert#vw-head-10">on this website</a>. See also my <a href="https://electronics.stackexchange.com/questions/438020/what-type-of-crimp-terminals-are-these">post on Electrical Engineering Stack Exchange</a>.</p>
+<p>I ended up only buying the connector housing from the dealer, and got my cables plus crimp terminals much cheaper at <a href="https://www.conrad.ch/">Conrad</a> (Total CHF 45.75):</p>
+<pre><a href="https://www.conrad.ch/de/p/kontakte-fuer-mcon-serie-automotiv-mcon-interconnection-system-te-connectivity-inhalt-1-st-1499782.html?searchType=SearchRedirect">1499782		FLACHSTECKER 0.5-0.75 (1718760-1)</a>
+<a href="https://www.conrad.ch/de/p/kontakte-fuer-mcon-serie-automotiv-mcon-interconnection-system-te-connectivity-inhalt-1-st-1499780.html?searchType=SearchRedirect">1499780		BUCHSENKONTAKTE 0.5-0.75 (1452668-1)</a>
+<a href="https://www.conrad.ch/de/p/te-connectivity-crimpkontakt-mcp-polzahl-gesamt-1-1-968876-3-1-st-1311639.html?searchType=SearchRedirect">1311639		BUCHSENKONTAKT MCP 2.8 1.0-2.5MM(1-9688</a>
+<a href="https://www.conrad.ch/de/p/te-connectivity-crimpkontakt-mcp-polzahl-gesamt-1-1-963749-1-1-st-1020714.html">1020714		FLACHSTECKER 2,8X0,8 1,5-2,5 CUSN VERZ</a>
+<a href="https://www.conrad.ch/de/p/leoni-76783113k000-fahrzeugleitung-flry-b-1-x-2-50-mm-schwarz-meterware-602785.html">602785 		FAHRZEUGLEITUNG 2,5 QMM SW FLRY-B</a></pre>
+<h4>T27b connector pinout</h4>
+<p>The following is the pinout I determined for the passenger-side door connector using the schematics available through the official <a href="https://erwin.seat.com/erwin/showHome.do">Seat erWin portal</a> for mechanics. Drivers side (T27a) is pretty much the same.</p>
+<pre>T27b	Steckverbindung, 27fach, an der A-Säule rechts
+ 1	0.35mm vi/gr	W93 Einstiegsleuchte Beifahrerseite
+ 2
+ 3
+ 4	0.35mm or/gn	B397 Verbindung 1 (CAN-Bus Komfort High) im Hauptleitungsstrang 
+ 5	0.35mm or/br	B406 Verbindung 1 (CAN-Bus Komfort Low) im Hauptleitungsstrang
+ 6
+ 7	0.5mm ws	G180 Crashsensor für Seitenairbag Beifahrerseite
+ 8	0.5mm br	G180 Crashsensor für Seitenairbag Beifahrerseite
+ 9	0.5mm bl/gn	R98 —> W87 Leuchte für Türambientebeleuchtung Beifahrerseite
+10	0.5mm ws	R99  —> W87 Leuchte für Türambientebeleuchtung Beifahrerseite
+11
+12	0.5mm vi/ws	V472 Motor für Fensterheber hinten Beifahrerseite
+13	0.35mm sw/bl	G416 Sensor für Türaussengriffberührung Beifahrerseite
+14	0.35mm gn/sw	R135 Antenne Beifahrerseite für Zugang und Startsystem
+15	0.35mm ws/sw	R235 Antenne Beifahrerseite für Zugang und Startsystem
+16	0.5mm br	367 Masseverbindung 2 im Hauptleitungsstrang
+17	0.35mm vi/ws	[—> 127] K133 Kontrollleuchte für SAFE-Funktion der Zentralverriegelung
+18	2.5mm br	371 Masseverbindung 6 im Hauptleitungsstrang
+19	2.5mm rt/ge	[—> 11] B318 Plusverbindung 4 (30a) im Hauptleitungsstrang
+20	1.5mm br/gn	B103 Verbindung (Plus, Lautsprecher vorn rechts) im Hauptleitungsstrang
+21	1.5mm br/bl	B104 Verbindung (Minus, Lautsprecher vorn rechts) im Hauptleitungsstrang
+22
+23
+24
+25
+26
+27</pre>
+
+<p>Additionally, there were one or two connections (I do not remember exactly) somewhere in there for the keyless door lock/unlock/antenna.</p>
+
+<h3>Connector for the J533 data bus</h3>
+<p>Another option would be to connect to all the CAN buses that run into the J533 gateway device, which is located behind the steering column. I did not end up actually using these as it seemed too risky to me to mess with the connections at this very central point. Furthermore, it is much more difficult to access this spot. Nevertheless, here are the parts I have found:</p>
+<ul>
+	<li>Housing (OEM part number 8E0972420), <a href="https://eu.mouser.com/ProductDetail/TE-Connectivity/1-1534095-1?qs=%2Fha2pyFadugNsLzyiXwJTTMEmI21KpeDaIQOnx3FCxXxpCvPyr5DRg%3D%3D">TE Connectivity 1-1534095-1</a></li>
+	<li><a href="https://eu.mouser.com/ProductDetail/te-connectivity/966871-1/?qs=JYLkd4zKY5dW3L%252b8YJ0aPQ==">Male connector (TE Connectivity 966871-1)</a></li>
+	<li><a href="https://eu.mouser.com/ProductDetail/te-connectivity/1534102-1/?qs=MzdiiTx5rGzFxLSyx%2FRGFw==">Female connector (TE Connectivity 1534102-1)</a></li>
+	<li><a href="https://eu.mouser.com/ProductDetail/te-connectivity/928999-1-cut-strip/?qs=b85dNVE93B5%2F7qIDk%2FHZ4g==">Crimp terminals (TE Connectivity 928999-1)</a></li>
+</ul>
+<p>According to the schematics the pinout at this connector looks something like this:</p>
+
+<pre>Steckverbindung, 20fach T20a
+1	0.35mm	rot / weiss
+2	0.5mm	rot / violett
+3	0.35mm	violett / weiss
+4	
+5	0.35mm	orange / violett	CANL KOMFORT
+6	0.35mm	orange / violett	CANL ANTRIEB
+7	0.35mm	orange / violett	CANL EXTENDED
+8	0.35mm	orange / braun		CANL FAHRWERK / SCHALTTAFELEINSATZ
+9	0.35mm 	orange / violett	CANL DIAGNOSE
+10	0.35	orange / braun		CANL INFOTAINMENT
+12	0.5mm	braun
+13	0.35mm	violett / blau
+14 	0.35mm	violett / schwarz
+15	0.35mm	orange / grün		CANH KOMFORT
+16	0.35mm	orange / schwarz	CANH ANTRIEB
+17	0.35mm	orange / grau		CANH EXTENDED
+18	0.35mm 	orange / blau		CANH FAHRWERK / SCHALTTAFELEINSATZ
+19	0.35mm	orange / schwarz	CANH DIAGNOSE
+20	0.35mm	orange / violett	CANH INFOTAINMENT</pre>
+
+<p>To be continued!</p>

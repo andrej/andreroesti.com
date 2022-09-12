@@ -1,0 +1,41 @@
+---
+title: Efficient GPU Implementation of Stencils on Unstructured Grids
+tagline: Bachelor Thesis completed at ETH Zürich using Nvidia CUDA
+do_link: true
+date: 2020-05-01
+---
+
+<h2 class="section-title">Bachelor Thesis</h2>
+
+<h3>Efficient GPU Implementation of Stencils on Unstructured Grids</h3>
+
+<p>For my bachelor thesis, I implemented and benchmarked three stencil computations &mdash; local calculations applied to every cell in a three-dimensonal grid &mdash; using the Nvidia CUDA programming model on regular and unstructured grids. I explored five methods to access a grid’s cells in a stencil code and tested four strategies for storing the grid’s structural information (neighborship table). Notably, I conceived a compression scheme for the neighborship table, which improves runtimes compared to uncompressed implementations by 30% in some cases. Most of the other optimizations make use of an assumed regular structure in one of the dimensions.
+
+<p>You can download a PDF of my bachelor thesis here:
+
+<ul class="horizontal-nav">
+	<li><a href="{{ 'attachments/bachelor-thesis.pdf' | relative_url }}">{% include icon.html icon='pdf.svg' %} PDF Efficient GPU Implementation of Stencils on Unstructed Grids</a>
+	<li><a href="https://github.com/andrej/stencil-performance">{% include icon.html icon='github.svg' %} GitHub repository</a></li>
+</ul>
+
+
+<h4>Some figures from the paper</h4>
+
+<div class="row three-columns nospace">
+
+<figure class="column">
+<img src="{{ 'attachments/bachelor-thesis-laplap-z-curves-no-comp-chase-threads-prod.png' | relative_url }}" alt="Graph. Y axis: Median runtime [us]. X axis: Number of threads. Five lines of data. 1. sliced z-loop, 600 ms at 32 threads, slightly below 800 us at 512 threads. 2. z-loop, 600 us at 32 threads, 800 us at 512 threads. 3. shared, slightly above 1000 us at 32 threads, ~650 us at 512 threads. 4. index variables, 1000 us at 32 threads, slightly above 600 us at 512 threads. 5. naive, 1200 us at 32 threads, 800 us at 512 threads." /> 
+<p>Figure from the paper showing median runtimes for varying number of threads and different stencil implementations. This is for the "Laplace-of-Laplace" stencil.</p>
+</figure>
+
+<figure class="column">
+<img src="{{ 'attachments/bachelor-thesis-overview-laplap.png' | relative_url }}" alt="Bar graph. Y axis: Median runtime [us]. X axis: groups chasing uncompressed; chasing compressed; non-chasing uncompressed; non-chasing compressed. Bars of six different colors, for groups 'regular', 'index variables', 'z-loop', 'sliced z-loop', 'shared z-loop', and 'naive'. The fastest implementation is chasing compressed using index variables algorithm at about 550 us. The slowest implementation is chasing uncompressed using the naive algorithm at about 800 us." /> 
+<p>Overview graph showing the performance of different configurations of the Laplace-of-Laplace stenci algorithm, using different representations of the neighborship table (pointer chasing vs explicit storage, and compressed vs uncompressed neighborship table, using different representations of the neighborship table (pointer chasing vs explicit storage, and compressed vs uncompressed neighborship table).</p>
+</figure>
+
+<figure class="column">
+<img src="{{ 'attachments/bachelor-thesis-layouts.png' | relative_url }}" alt="Graph. Shows three columns of blue lines. First column: Lines stretch left to right in each row, then connect diagonally to the lower row. Second column: Z-shaped lines fill the grid. Third column: As in second column, but Z-shapes are stretched in the horizontal dimension." /> 
+<p>Different memory layouts that were tested, left to right: Row-major, Z-curves, stretched Z-curves.</p>
+</figure>
+
+</div>

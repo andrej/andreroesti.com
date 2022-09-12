@@ -1,4 +1,5 @@
-url: https://andrej.github.io/andreroesti.com
+url: https://andreroesti.com
+baseurl: /
 title: André Rösti
 defaults:
   - scope:

@@ -8,6 +8,8 @@ window.onload = function() {
 		var link_t = document.createTextNode(address);
 		var icon_e = e[i].getElementsByClassName("icon");
 		link_e.setAttribute('href', 'mailto:'+address);
+		link_e.setAttribute('data-link', address);
+		link_e.setAttribute('title', address);
 		link_e.setAttribute('class', 'email');
 		if(icon_e) {
 			link_e.setAttribute('class', link_e.getAttribute('class') + ' has-icon');

@@ -1,0 +1,24 @@
+---
+title: Real-time Audio Visualization in Python
+tagline: High School Project in Python with NumPy, SDL, Cairo
+do_link: true
+date: 2014-08-01
+---
+
+<h2 class="section-title">High School Graduation Project</h2>
+<h3>Music Visualization in Python</h3>
+<p>For my high school graduation project, I built a music visualization program in Python using NumPy for on-the-fly frequency analysis of microphone inputs (alternatively audio file inputs are also supported), the Cairo graphics library for generating the graphics, and the SDL library for audio/video input/output interaction with the operating system. Illustrated explanations of the Fourier transform and the wave file format as well as a history of music visualization are featured in the paper that accompanied the program.</p>
+<p>The report is in German, but contains many visualizations and figures.</p>
+<ul class="horizontal-nav">
+	<li><a href="{{ 'attachments/maturaarbeit.pdf' | relative_url }}">{% include icon.html icon='pdf.svg' %} High school project on music visualization (PDF)</a></li>
+	<li style="display:block"><a href="https://github.com/andrej/music-visualization">{% include icon.html icon='github.svg' %} GitHub repository</a> &mdash; my code has gotten better since High School ;-)</li>
+</ul>
+
+<h4>Example Visualization</h4>
+<figure>
+	<div style="background: no-repeat top left url('{{ 'attachments/maturaarbeit-still.jpg' | relative_url }}'); width: 640px; height: 360px; max-width: 100%;">
+	<video controls width="640" height="360" style="max-width:100%">
+		<source src="{{ 'attachments/maturaarbeit.mov' | relative_url }}" />
+	</video>
+	</div>
+</figure>

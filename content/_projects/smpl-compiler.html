@@ -1,0 +1,53 @@
+---
+title: Optimizing SMPL Compiler
+tagline: Includes DLX backend, register allocator, and AST/IR graphs 
+do_link: true
+date: 2021-03-18
+---
+
+<h2 class="section-title">Class Project</h2>
+<h3>SMPL Compiler</h3>
+
+<p>As a project in Prof. Dr. Michael Franz's Advanced Compiler Construction class at the University of California, Irvine, I created this optimizing compiler for a simple programming language. It includes a backend for the DLX instruction set architecture with a very simple register allocator, and performs constant elimination, common subexpression elimination, and dead code elimination.</p>
+<ul class="horizontal-nav">
+	<li><a href="https://github.com/andrej/smpl-compiler">{% include icon.html icon='github.svg' %} GitHub repository</a></li>
+	<li><a href="{{ '/attachments/smpl-compiler-presentation.pdf' | relative_url }}">{% include icon.html icon='pdf.svg' %} Final presentation (PDF)</a></li>
+</ul>
+
+<h4>Sample Program and Compiler-Generated IR and AST</h4>
+
+<div class="row two-columns">
+	<figure class="column">
+		<pre>main
+var i, j, k, out;
+{
+	let i <- 0;
+	let k <- 2;
+	let out <- 1;
+	while i < 20 do
+	let out <- out * 2;
+	let j <- 0;
+	while j < 10 do
+		let out <- out + j;
+		let j <- j + 1;
+	od;
+	let i <- i + 1;
+	let k <- 3;
+	od;
+	let out <- out + k;
+	call outputNum(out);
+}.</pre>
+		<p>A sample program in the SMPL programming language.</p>
+	</figure>
+
+
+	<figure class="column" style="float:right">
+		<a href="{{ 'attachments/smpl-compiler-ir.svg' | relative_url }}" target="_blank"><img src="{{ 'attachments/smpl-compiler-ir.svg' | relative_url }}" alt="DOT graph of intermediate representation" /></a>
+		<p>Besides producing binaries, the compiler can also output GraphViz <code>.dot</code> files. This is the generated graphical representation of the intermediate representation (IR) of the above/left program. The blue lines note dominating basic blocks, used for optimization. (Click for larger graphic.)</p>
+	</figure>
+
+	<figure class="column" style="padding-left: 0">
+		<a href="{{ 'attachments/smpl-compiler-ast.svg' | relative_url }}" target="_blank"><img src="{{ 'attachments/smpl-compiler-ast.svg' | relative_url }}" alt="DOT graph of AST" /></a>
+		<p>The abstract syntax tree can also be output. This is the graph output for the above program. (Click for larger graphic.)</p>
+	</figure>
+</div>
