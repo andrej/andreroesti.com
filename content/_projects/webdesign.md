@@ -3,6 +3,7 @@ title: Freelance WordPress Web Development
 tagline: Websites I have created for clients between 2015 and 2017
 date: 2017-01-01
 do_link: true
+category: project
 ---
 
 <h2 class="section-title">Freelance Work</h2>

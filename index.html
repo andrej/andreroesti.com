@@ -9,10 +9,18 @@
 
 <div class="row two-columns">
 
-<section class="column">
-<h2 class="section-title">Research &amp; Projects</h2>
-{% include articles.html collection=site.projects link_all=false %}
+<div class="column">
+<section>
+<h2 class="section-title">Research</h2>
+{%- assign research = site.projects | where: "category", "research" -%}
+{% include articles.html collection=research link_all=false filt="false" %}
 </section>
+<section>
+<h2 class="section-title">Projects</h2>
+{%- assign projects = site.projects | where: "category", "project" -%}
+{% include articles.html collection=projects link_all=false filt="item.category='project'" %}
+</section>
+</div>
 
 <section class="column">
 <h2 class="section-title">Notes &amp; Personal</h2>
