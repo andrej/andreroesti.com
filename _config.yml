@@ -17,3 +17,6 @@ collections:
     relative_directory: notes
     output: true
     sort_by: date
+  pages:
+    directory: /pages
+    output: true

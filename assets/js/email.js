@@ -11,7 +11,7 @@ window.onload = function() {
 		link_e.setAttribute('data-link', address);
 		link_e.setAttribute('title', address);
 		link_e.setAttribute('class', 'email');
-		if(icon_e) {
+		if(icon_e.length > 0) {
 			link_e.setAttribute('class', link_e.getAttribute('class') + ' has-icon');
 			link_e.appendChild(icon_e[0]);
 		}

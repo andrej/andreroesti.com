@@ -367,6 +367,14 @@ footer {
 	color: #aaa;
 }
 
+footer a, footer a:visited {
+	color: #aaa;
+}
+
+footer a:hover {
+	color: #777;
+}
+
 /* Miscellaneous */
 .skip-link, .hidden {
 	/* Only for screen readers */
