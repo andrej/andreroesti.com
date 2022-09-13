@@ -15,43 +15,48 @@ category: project
 
 <h4>Selection of Projects Completed for Customers</h4>
 
-<div class="row two-columns">
+<div class="row two-columns pad centering">
 
-<figure class="column">
+<div class="column">
+<figure>
 <a href="{{ 'attachments/webdesign/rwonline.png' | relative_url }}" target="_blank"><img src="{{ 'attachments/webdesign/rwonline-small.png' | relative_url }}" alt="Screenshot of Website rwonline.ch" /></a>
 <p>Accounting Textbook RW Online, <a href="http://rwonline.ch">www.rwonline.ch</a></p>
 </figure>
-
-<figure class="column">
+</div>
+<div class="column">
+<figure>
 <a href="{{ 'attachments/webdesign/bergluft.png' | relative_url }}" target="_blank"><img src="{{ 'attachments/webdesign/bergluft-small.png' | relative_url }}" alt="Screenshot of Website chalet-bergluft.ch" /></a>
 <p>Vacation Home Chalet Bergluft, <a href="http://chaletbergluft.ch">www.chaletbergluft.ch</a></p>
 </figure>
-
+</div>
 </div>
 
-<div class="row two-columns">
-
-<figure class="column">
+<div class="row two-columns pad centering">
+<div class="column">
+<figure>
 <a href="{{ 'attachments/webdesign/panorama.png' | relative_url }}" target="_blank"><img src="{{ 'attachments/webdesign/panorama-small.png' | relative_url }}" alt="Screenshot of Website panoarama-brienz.ch" /></a>
 <p>Restaurant Panorama Brienz, <a href="http://panorama-brienz.ch">www.panorama-brienz.ch</a></p>
 </figure>
-
-<figure class="column">
+</div>
+<div class="column">
+<figure>
 <a href="{{ 'attachments/webdesign/gurnigelsport.png' | relative_url }}" target="_blank"><img src="{{ 'attachments/webdesign/gurnigelsport-small.png' | relative_url }}" alt="Screenshot of Website gurnigelsport.ch" /></a>
 <p>Sporting Goods Store, <a href="http://gurnigelsport.ch">www.gurnigelsport.ch</a></p>
 </figure>
 </div>
+</div>
 
-<div class="row two-columns">
-
-<figure class="column">
+<div class="row two-columns pad centering">
+<div class="column">
+<figure>
 <a href="{{ 'attachments/webdesign/waldmaeuse.png' | relative_url }}" target="_blank"><img src="{{ 'attachments/webdesign/waldmaeuse-small.png' | relative_url }}" alt="Screenshot of Website waldmaeuse.ch" /></a>
 <p>Play Group, <a href="http://waldmaeuse.ch">www.waldmaeuse.ch</a></p>
 </figure>
-
-<figure class="column">
+</div>
+<div class="column">
+<figure>
 <a href="{{ 'attachments/webdesign/basiclaw.png' | relative_url }}" target="_blank"><img src="{{ 'attachments/webdesign/basiclaw-small.png' | relative_url }}" alt="Screenshot of Website basiclaw.ch" /></a>
 <p>Textbook Basic Law, <a href="http://basiclaw.ch">www.basiclaw.ch</a></p>
 </figure>
-
+</div>
 </div>
