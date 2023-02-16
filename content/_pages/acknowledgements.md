@@ -3,9 +3,7 @@
 
 <h2 class="section-title">Acknowledgements</h2>
 
-The content and design of this website is the intellectual property of André Rösti, &copy; 2022. For anyone wondering, that's my handwriting in the header.
-
-Hosted on [GitHub Pages](https://pages.github.com).
+If not noted otherwise, &copy; 2023 André Rösti.
 
 ### Jekyll
 
