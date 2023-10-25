@@ -1,7 +1,7 @@
 <ul class="articles">
 	{%- for item in include.collection reversed -%}
 	<li>
-		<h3 class="article-heading">{% if include.link_all or item.do_link %}<a href="{{ item.url | relative_url }}">{% endif %}{{ item.title }}{% if include.link_all or item.do_link %}</a>{% endif %}</h3>
+		<h3 class="article-heading">{% if include.link_all or item.do_link %}<a href="{% unless item.manual_link %}{{ item.url | relative_url }}{% else %}{{ item.target_url }}{% endunless %}">{% endif %}{{ item.title }}{% if include.link_all or item.do_link %}</a>{% endif %}</h3>
 		{{ item.tagline | markdownify }}
 	</li>
 	{%- endfor -%}

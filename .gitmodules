@@ -1,3 +1,6 @@
 [submodule "SuperTinyIcons"]
 	path = SuperTinyIcons
 	url = https://github.com/edent/SuperTinyIcons.git
+[submodule "data-layout-viz"]
+	path = data-layout-viz
+	url = https://github.com/andrej/data-layout-viz
