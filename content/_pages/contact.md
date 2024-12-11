@@ -8,5 +8,3 @@ For any inquiries about my projects, errata on this website, or any other reason
 <ul class="horizontal-nav">
 <li><span class="email">{% include icon.html icon='email.svg' %} <span>an {dot} roesti {at} gmail {dot} com</span></span></li>
 </ul>
-
-(Unless you are a bot.)

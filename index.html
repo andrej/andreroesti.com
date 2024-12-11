@@ -3,8 +3,10 @@
 
 <section class="row">
 <h2 class="section-title">About Me</h2>
-<p>Hi! I'm André, a Ph.D. student in the <a href="https://ssllab.org">Secure Systems and Software Lab</a> at the University of California, Irvine. My research interests broadly span operating systems, systems security, and compilers. I am currently working on a novel multi-variant execution environment that incorporates attacker deception techniques.</p>
-<p>On this website, you can find a selection of projects I have worked on, as well as some technical notes that might be useful to others.</p>
+<p>Hi! I'm André, a Ph.D. candidate in the <a href="https://ssllab.org">Secure Systems and Software Lab</a> at the University of California, Irvine, anticipating to graduate end of March 2025. My research interests broadly span operating systems, systems security, and compilers.</p>
+<ul class="horizontal-nav">
+<li><span class="email">{% include icon.html icon='email.svg' %} <span>an {dot} roesti {at} gmail {dot} com</span></span></li>
+</ul>
 </section>
 
 <div class="row two-columns">
@@ -15,16 +17,18 @@
 {%- assign research = site.projects | where: "category", "research" -%}
 {% include articles.html collection=research link_all=false filt="false" %}
 </section>
+</div>
+
+<div class="column">
 <section>
 <h2 class="section-title">Projects</h2>
 {%- assign projects = site.projects | where: "category", "project" -%}
 {% include articles.html collection=projects link_all=false filt="item.category='project'" %}
 </section>
-</div>
-
-<section class="column">
+<section>
 <h2 class="section-title">Notes &amp; Personal</h2>
 {% include articles.html collection=site.notes link_all=true %}
 </section>
+</div>
 
 </div>
