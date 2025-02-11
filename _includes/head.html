@@ -6,6 +6,9 @@
 {%- endif %}
 	<link rel="stylesheet" type="text/css" href="{{ '/assets/css/style.css' | relative_url }}" />
 	<link rel="stylesheet" type="text/css" href="{{ '/assets/css/highlight.css' | relative_url }}" />
+{%- for addl_style in page.additional_styles %}
+	<link rel="stylesheet" type="text/css" href="{{addl_style | relative_url }}" />
+{%- endfor %}
 	<script src="{{ '/assets/js/email.js' | relative_url }}"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="theme-color" content="#000000" />
