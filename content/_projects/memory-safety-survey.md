@@ -1,6 +1,6 @@
 ---
 title: "The Astonishing Evolution of Probabilistic Memory Safety: From Basic Heap-Data Attack Detection Toward Fully Survivable Multivariant Execution"
-tagline: "A. Rösti, A. Voulimeneas, and M. Franz. IEEE Security & Privacy Special Issue on Memory Safety (Volume: 22, Issue: 4, July-Aug. 2024) pp. 66 - 75."
+tagline: "A. Rösti, A. Voulimeneas, M. Franz, IEEE Security & Privacy (Volume: 22, Issue: 4, July-Aug. 2024) pp. 66 - 75, 2024."
 do_link: true
 manual_link: true
 target_url: "https://ieeexplore.ieee.org/abstract/document/10557576"
